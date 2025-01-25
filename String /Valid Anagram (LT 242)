@@ -1,0 +1,21 @@
+class Solution {
+    public boolean isAnagram(String s, String t) {
+        if(s.length()!=t.length()){
+            return false;
+        }
+        int hash[]=new int[26];
+        for(int i=0;i<s.length();i++){
+            hash[s.charAt(i)-'a']++;
+        }
+        int hash1[]=new int[26];
+        for(int i=0;i<t.length();i++){
+            hash1[t.charAt(i)-'a']++;
+        }
+        for(int i=0, j=0;i<hash.length && j<hash1.length;i++,j++){
+                if(hash[i]!=hash1[j]){
+                    return false;
+                }
+        }
+        return true;
+    }
+}
