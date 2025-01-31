@@ -1,0 +1,21 @@
+class Solution {
+    public int findMiddleIndex(int[] nums) {
+        Stack<Integer> s=new Stack<>();
+        int totalsum=0;
+
+        for(int i=0;i<nums.length;i++){
+            totalsum+=nums[i];
+        }
+        int leftsum=0;
+        for(int i=0;i<nums.length;i++){
+            if(!s.isEmpty()){
+                leftsum+=s.pop();
+            }
+            if(leftsum==(totalsum-leftsum-nums[i])){
+                return i;
+            }
+            s.push(nums[i]);
+        }
+        return -1;
+    }
+}
